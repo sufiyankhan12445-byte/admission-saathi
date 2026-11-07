@@ -559,9 +559,9 @@ tbody tr:hover{background:rgba(255,255,255,.6)}
 (function () {
   "use strict";
 
-  // PRODUCTION WEBHOOK URL
-  const N8N_PRODUCTION_WEBHOOK_URL =
-    "https://sickoguy.app.n8n.cloud/webhook/b445f052-cd35-4c07-b5a4-4a5ce48f85c7";
+  // n8n test webhook URL
+  const N8N_WEBHOOK_URL =
+    "https://sickoguy.app.n8n.cloud/webhook-test/1ee7b2ef-84fe-4f5d-9630-01233c78343c";
 
   const chatFeed = document.getElementById("chatFeed");
   const queryInput = document.getElementById("counsellingQueryInput");
@@ -1017,7 +1017,7 @@ function addAssistantMessage(text, audioBase64, audioMimeType) {
     };
   }
 
-  // SEND TO PRODUCTION WEBHOOK
+  // SEND TO N8N WEBHOOK
   async function sendQuery() {
     if (isSending) return;
 
@@ -1064,7 +1064,7 @@ function addAssistantMessage(text, audioBase64, audioMimeType) {
         formData.append("audio", recordedAudio, "recording.wav");
       }
 
-      const response = await fetch(N8N_PRODUCTION_WEBHOOK_URL, {
+      const response = await fetch(N8N_WEBHOOK_URL, {
         method: "POST",
         body: formData
       });
